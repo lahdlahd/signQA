@@ -1,0 +1,4 @@
+dist
+coverage
+e2e/playwright-report
+node_modules
