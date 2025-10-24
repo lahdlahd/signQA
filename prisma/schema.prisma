@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  name      String
+  avatarUrl String?
+  questions Question[]
+  answers   Answer[]
+  comments  Comment[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Question {
+  id          Int        @id @default(autoincrement())
+  title       String
+  slug        String     @unique
+  content     String
+  summary     String?
+  tags        String?
+  viewCount   Int        @default(0)
+  authorId    Int
+  author      User       @relation(fields: [authorId], references: [id])
+  answers     Answer[]
+  comments    Comment[]  @relation("QuestionComments")
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Answer {
+  id         Int        @id @default(autoincrement())
+  content    String
+  isAccepted Boolean    @default(false)
+  authorId   Int
+  author     User       @relation(fields: [authorId], references: [id])
+  questionId Int
+  question   Question   @relation(fields: [questionId], references: [id])
+  comments   Comment[]  @relation("AnswerComments")
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
+model Comment {
+  id         Int       @id @default(autoincrement())
+  body       String
+  authorId   Int
+  author     User      @relation(fields: [authorId], references: [id])
+  questionId Int?
+  question   Question? @relation("QuestionComments", fields: [questionId], references: [id])
+  answerId   Int?
+  answer     Answer?   @relation("AnswerComments", fields: [answerId], references: [id])
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
