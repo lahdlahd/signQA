@@ -1,0 +1,83 @@
+{
+  "users": [
+    {
+      "id": "u-alice",
+      "name": "Alice Kim",
+      "role": "member",
+      "reputation": 125,
+      "bio": "Interpreter and aspiring signer."
+    },
+    {
+      "id": "u-bob",
+      "name": "Bob Singh",
+      "role": "member",
+      "reputation": 210,
+      "bio": "Sign linguist who loves explaining nuances."
+    },
+    {
+      "id": "u-carol",
+      "name": "Carol Martinez",
+      "role": "admin",
+      "reputation": 540,
+      "bio": "Platform administrator overseeing community health."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-101",
+      "authorId": "u-alice",
+      "title": "How do you differentiate between QUESTION and QUERY in ASL?",
+      "body": "I often see different movements used for similar meanings. What's considered correct?",
+      "createdAt": "2024-02-12T10:45:00.000Z"
+    },
+    {
+      "id": "q-102",
+      "authorId": "u-bob",
+      "title": "Best practices for teaching fingerspelling to beginners?",
+      "body": "Looking for tips that help students remember letter transitions.",
+      "createdAt": "2024-03-01T14:03:00.000Z"
+    }
+  ],
+  "answers": [
+    {
+      "id": "a-201",
+      "questionId": "q-101",
+      "authorId": "u-bob",
+      "body": "Use palm orientation to differentiate. QUERY has a subtle wrist twist to emphasize the clarification.",
+      "createdAt": "2024-02-13T08:15:00.000Z"
+    },
+    {
+      "id": "a-202",
+      "questionId": "q-101",
+      "authorId": "u-alice",
+      "body": "It depends on regional usage. In my area we drag the QUESTION sign slightly longer.",
+      "createdAt": "2024-02-13T10:21:00.000Z"
+    },
+    {
+      "id": "a-203",
+      "questionId": "q-102",
+      "authorId": "u-alice",
+      "body": "Gamify the sessions. Time-based drills with small rewards keep learners engaged.",
+      "createdAt": "2024-03-02T09:00:00.000Z"
+    }
+  ],
+  "votes": [
+    {
+      "id": "vote-1",
+      "entityType": "question",
+      "entityId": "q-101",
+      "userId": "u-bob",
+      "value": 1,
+      "createdAt": "2024-02-12T12:00:00.000Z"
+    },
+    {
+      "id": "vote-2",
+      "entityType": "answer",
+      "entityId": "a-201",
+      "userId": "u-alice",
+      "value": 1,
+      "createdAt": "2024-02-13T09:00:00.000Z"
+    }
+  ],
+  "flags": []
+}

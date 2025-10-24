@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>signQA Community</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header__content">
+        <h1>signQA</h1>
+        <p class="tagline">Community knowledge sharing for sign language learners and experts.</p>
+      </div>
+      <div id="notification" role="alert" aria-live="polite"></div>
+    </header>
+
+    <main id="app">
+      <section class="panel" id="user-controls">
+        <div class="panel__header">
+          <h2>Who's browsing?</h2>
+        </div>
+        <div class="panel__body">
+          <label for="user-select">Switch account</label>
+          <select id="user-select"></select>
+        </div>
+      </section>
+
+      <section class="panel" id="user-profile">
+        <div class="panel__header">
+          <h2>User profile</h2>
+        </div>
+        <div class="panel__body" id="user-profile-body"></div>
+      </section>
+
+      <section class="panel" id="question-section">
+        <div class="panel__header">
+          <h2>Questions</h2>
+        </div>
+        <div class="panel__body" id="question-list"></div>
+      </section>
+
+      <section class="panel hidden" id="admin-panel">
+        <div class="panel__header">
+          <h2>Moderation dashboard</h2>
+          <button id="refresh-admin" class="button button--light">Refresh</button>
+        </div>
+        <div class="panel__body" id="admin-body"></div>
+      </section>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
