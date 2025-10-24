@@ -1,0 +1,111 @@
+[
+  {
+    "id": "digital-onboarding",
+    "title": "Neo-bank digital onboarding",
+    "sector": "Financial Services",
+    "summary": "Automated KYC and account opening contracts with adaptive routing and biometric checks.",
+    "tags": ["KYC automation", "API integration", "Mobile"],
+    "media": {
+      "type": "image",
+      "src": "https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?auto=format&fit=crop&w=1200&q=80",
+      "alt": "Customer holding a phone during a banking signup flow"
+    },
+    "impactMetrics": [
+      "72% faster customer activation",
+      "98.4% completion rate across mobile journeys",
+      "Verified identities in under 90 seconds"
+    ],
+    "mdxBody": "## Challenge\nFintech analysts uncovered that manual reviews added up to three days to onboarding and exposed gaps in audit evidence. Legacy email-based agreements meant compliance teams manually stitched every KYC document before storing it in regulated archives.\n\n## Solution\n- Render adaptive KYC forms with Sign Global's embedded components.\n- Trigger signer verification with selfie match when the risk engine flags high-value accounts.\n- Stream completed audit bundles to the compliance data lake with the evidence export API.\n\n## Outcomes\n**Reduced** customer drop-off by syncing reminders with the bank's CRM. _Improved_ compliance posture through immutable evidence manifests.",
+    "resources": [
+      {
+        "label": "Identity orchestration guide",
+        "href": "https://sign.global/docs/solutions/identity-orchestration"
+      },
+      {
+        "label": "Evidence export API reference",
+        "href": "https://sign.global/docs/api/evidence-export"
+      }
+    ]
+  },
+  {
+    "id": "remote-notarization",
+    "title": "Remote notarization for title transfers",
+    "sector": "Legal & Government",
+    "summary": "Digitized closing packets with qualified signatures, secure video attestations, and audit-ready exports.",
+    "tags": ["Qualified signatures", "Video evidence", "Compliance"],
+    "media": {
+      "type": "video",
+      "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      "poster": "https://images.unsplash.com/photo-1505849864904-01c3173c9e9b?auto=format&fit=crop&w=1200&q=80",
+      "alt": "Notary verifying documents over secure video session"
+    },
+    "impactMetrics": [
+      "Cut notarization turnaround to under 4 hours",
+      "Auditors approved digital evidence without exception",
+      "Zero fraudulent notarization attempts post-launch"
+    ],
+    "mdxBody": "## Challenge\nCounty clerks needed a remote-first process to handle property title transfers during hybrid working schedules, without sacrificing legally required in-person notarization checks.\n\n## Solution\n- Scheduled signers through Sign Global's workflow engine with jurisdiction-specific notarization steps.\n- Captured live video attestations and attached them to the evidence packet as a qualified biometric record.\n- Ran automatic compliance exports into the county's records system every evening.\n\n## Outcomes\nRegulators gained real-time dashboards with **tamper-evident** tracking. Citizens accessed a unified portal that _reduced paperwork_ and eliminated in-person visits for routine transfers.",
+    "resources": [
+      {
+        "label": "Qualified notarization playbook",
+        "href": "https://sign.global/docs/solutions/notarization"
+      },
+      {
+        "label": "Video evidence API",
+        "href": "https://sign.global/docs/api/video-evidence"
+      }
+    ]
+  },
+  {
+    "id": "pharma-consent",
+    "title": "Pharma lab consent orchestration",
+    "sector": "Life Sciences",
+    "summary": "Coordinated clinical trial consent with multi-language flows and audit-ready evidence.",
+    "tags": ["Clinical trials", "Multilingual", "Accessibility"],
+    "media": {
+      "type": "image",
+      "src": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
+      "alt": "Clinical researcher reviewing consent forms on a tablet"
+    },
+    "impactMetrics": [
+      "Consent cycle time dropped from 8 days to 36 hours",
+      "98 languages supported with automatic locale detection",
+      "Regulatory findings closed 2x faster with linked evidence"
+    ],
+    "mdxBody": "## Challenge\nA global pharma sponsor needed auditable consent capture for decentralized trials. Legacy PDF packets were difficult to update when protocol changes rolled out mid-study.\n\n## Solution\n- Authored dynamic consent templates using MDX blocks that updated across all studies instantly.\n- Embedded accessibility metadata, screen-reader hints, and video walk-throughs for complex study phases.\n- Streamed signed packets into the validated eTMF with the records connector.\n\n## Outcomes\nParticipants viewed contextual content on any device, clinical operations maintained a **single source of truth**, and regulators accessed immutable trails within minutes of request.",
+    "resources": [
+      {
+        "label": "Life sciences compliance guide",
+        "href": "https://sign.global/docs/solutions/life-sciences"
+      }
+    ]
+  },
+  {
+    "id": "municipal-permits",
+    "title": "Smart city permit approvals",
+    "sector": "Public Sector",
+    "summary": "Streamlined construction permits with automated routing, fee payments, and compliance checkpoints.",
+    "tags": ["Workflow automation", "Civic tech", "Payments"],
+    "media": {
+      "type": "image",
+      "src": "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80",
+      "alt": "City skyline representing civic digital services"
+    },
+    "impactMetrics": [
+      "Approval SLAs met 99% of the time",
+      "Cut manual review effort by 240 staff hours monthly",
+      "Collected permit fees at submission with embedded payments"
+    ],
+    "mdxBody": "## Challenge\nPermitting teams balanced rising demand with limited staff, resulting in six-week backlogs and frustrated contractors.\n\n## Solution\n- Configured branched workflows that routed commercial builds to engineering reviews while fast-tracking residential remodels.\n- Synchronized payments with the city's finance system using Sign Global's payments connector.\n- Published a public status tracker to keep applicants informed in real-time.\n\n## Outcomes\nContractors self-served their documentation, city staff monitored SLAs in a shared dashboard, and civic leaders showcased tangible **smart city** progress to residents.",
+    "resources": [
+      {
+        "label": "Public sector accelerators",
+        "href": "https://sign.global/docs/solutions/public-sector"
+      },
+      {
+        "label": "Workflow automation patterns",
+        "href": "https://sign.global/docs/workflows/patterns"
+      }
+    ]
+  }
+]

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Use case explorer · signQA</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <header class="site-header site-header--secondary">
+      <div class="site-header__content">
+        <p class="site-header__eyebrow">sign.global playbooks</p>
+        <h1 class="site-header__title">Use case explorer</h1>
+        <p class="site-header__subtitle">
+          Discover how teams across industries ship sign.global powered experiences. Filter by sector or tags, then open rich playbooks to see implementation details, metrics, and documentation resources.
+        </p>
+        <div class="site-header__actions">
+          <a class="button button--ghost" href="index.html">← Back to knowledge base</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout layout--use-cases">
+      <section class="use-case-controls">
+        <div class="use-case-controls__group">
+          <h2>Sector</h2>
+          <div class="filter-chip-group" data-sector-filters></div>
+        </div>
+        <div class="use-case-controls__group">
+          <h2>Tags</h2>
+          <div class="filter-checkbox-group" data-tag-filters></div>
+        </div>
+        <p class="use-case-controls__count" data-results-count>0 use cases</p>
+      </section>
+
+      <section class="use-case-results" data-use-case-results>
+        <div class="loading">Loading use cases…</div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Looking for something specific? Share your requirements so we can expand the library.</p>
+    </footer>
+
+    <script type="module" src="./scripts/use-case-explorer.js"></script>
+  </body>
+</html>

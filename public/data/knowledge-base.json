@@ -1,0 +1,194 @@
+{
+  "updatedAt": "2024-10-24",
+  "categories": [
+    {
+      "id": "developer-setup",
+      "title": "Developer Setup",
+      "summary": "Kick-start integrations with secure authentication, sandbox tooling, and webhook reliability guidance.",
+      "docModule": {
+        "title": "Developer launch checklist",
+        "description": "Essential docs to help you move from proof-of-concept to production in record time.",
+        "links": [
+          {
+            "label": "API Authentication Overview",
+            "href": "https://sign.global/docs/platform/authentication"
+          },
+          {
+            "label": "Sandbox Quickstart",
+            "href": "https://sign.global/docs/platform/getting-started"
+          },
+          {
+            "label": "Postman Reference Collection",
+            "href": "https://sign.global/docs/tools/postman"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "id": "api-authentication",
+          "question": "How do I authenticate with the Sign Global API?",
+          "summary": "Use OAuth 2.0 client credentials, rotating secrets, and environment pinning for secure calls.",
+          "answer": [
+            "Sign Global issues dedicated OAuth 2.0 client credentials per environment. Generate them from the developer console and scope them to the minimum capabilities required by your integration.",
+            "Exchange the client credentials for a short-lived bearer token using the /oauth/token endpoint. Tokens expire every 30 minutes, so cache and refresh them automatically within your integration.",
+            "When you promote to production, pin the issuing domain using the \"aud\" claim and enable mutual TLS if your compliance team requires it."
+          ],
+          "keyActions": [
+            "Create sandbox credentials and store them securely using your secrets manager.",
+            "Automate token refresh at 70% of the token lifetime to avoid race conditions.",
+            "Enable mutual TLS and domain pinning before requesting production access."
+          ],
+          "relatedUseCases": [
+            "digital-onboarding",
+            "municipal-permits"
+          ]
+        },
+        {
+          "id": "webhook-signatures",
+          "question": "How can I verify webhook payloads?",
+          "summary": "Verify webhook signatures and replay protections to keep workflows tamper-proof.",
+          "answer": [
+            "Every webhook payload includes an X-Signature header that combines an HMAC digest with an event timestamp.",
+            "Hash the raw request body with your webhook secret using SHA-256, then compare it to the provided signature using a constant-time comparison utility.",
+            "Reject payloads where the timestamp is older than five minutes or the nonce was previously processed to prevent replay attacks."
+          ],
+          "keyActions": [
+            "Fetch the latest webhook secret from the console and rotate it quarterly.",
+            "Log rejected payloads with their message IDs for observability dashboards.",
+            "Leverage the retry headers to trace automatic replays after transient failures."
+          ],
+          "relatedUseCases": [
+            "digital-onboarding",
+            "pharma-consent"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "compliance-trust",
+      "title": "Compliance & Trust",
+      "summary": "Deliver audit-ready experiences with configurable identity, storage, and evidence trails.",
+      "docModule": {
+        "title": "Trust & compliance toolkit",
+        "description": "Configure data residency, advanced signatures, and evidence exports to pass audits with confidence.",
+        "links": [
+          {
+            "label": "Qualified & Advanced Signatures",
+            "href": "https://sign.global/docs/compliance/qualified-signatures"
+          },
+          {
+            "label": "Audit Trail Exports",
+            "href": "https://sign.global/docs/compliance/audit-trails"
+          },
+          {
+            "label": "Data Residency Controls",
+            "href": "https://sign.global/docs/compliance/data-residency"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "id": "data-residency",
+          "question": "Where is signer evidence stored and how can I localize it?",
+          "summary": "Select the residency region per workspace and archive signatures into your regulated storage.",
+          "answer": [
+            "Every workspace defaults to the EU residency cluster. Workspace administrators can request additional regions from the compliance tab, including US, CA, and APAC.",
+            "For signature packets requiring on-prem archiving, stream finalized PDFs and audit logs to your S3-compatible vault using the data export API.",
+            "Residency preferences cascade to signer verification services, ensuring face match and identity checks stay in-region."
+          ],
+          "keyActions": [
+            "Submit a residency change request from the console before going live in a new jurisdiction.",
+            "Configure export webhooks to push audit bundles to your cold storage bucket.",
+            "Review the residency status in quarterly compliance reviews."
+          ],
+          "relatedUseCases": [
+            "remote-notarization",
+            "pharma-consent"
+          ]
+        },
+        {
+          "id": "audit-trail",
+          "question": "How do I export an immutable audit trail for regulators?",
+          "summary": "Bundle signer evidence, IP history, and biometric attestations into tamper-evident packages.",
+          "answer": [
+            "Trigger an export by calling /evidence/export or by enabling automatic exports in the workspace trust settings.",
+            "Exports include the signed PDF, JSON audit log, signature certificates, and hash manifest. Store the manifest with your chain-of-custody evidence.",
+            "For regulated sectors, enable dual attestation to capture witness seals or qualified certificates within the same export bundle."
+          ],
+          "keyActions": [
+            "Enable automatic exports after every completed envelope.",
+            "Validate manifest hashes in your downstream archive to detect tampering.",
+            "Route exports to SIEM tooling for anomaly alerting."
+          ],
+          "relatedUseCases": [
+            "remote-notarization",
+            "municipal-permits"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "operations-automation",
+      "title": "Operations Automation",
+      "summary": "Automate reminders, approvals, and escalations to release capacity for high-value work.",
+      "docModule": {
+        "title": "Operations excellence starter pack",
+        "description": "Frameworks and templates to orchestrate high-volume signature workflows with clarity.",
+        "links": [
+          {
+            "label": "Workflow Templates",
+            "href": "https://sign.global/docs/workflows/templates"
+          },
+          {
+            "label": "Bulk Send API",
+            "href": "https://sign.global/docs/workflows/bulk-send"
+          },
+          {
+            "label": "Event Notifications",
+            "href": "https://sign.global/docs/workflows/notifications"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "id": "workflow-automation",
+          "question": "How do I build conditional workflows with approvals and reminders?",
+          "summary": "Design multi-step flows with automated reminders and branch logic per recipient.",
+          "answer": [
+            "Compose workflows in the visual builder or via the /workflows API by chaining steps for routing, approvals, and final signatures.",
+            "Add conditional branches that evaluate recipient metadata. For example, skip notarization when the contract value is below your internal threshold.",
+            "Configure reminder cadences per recipient role. Sign Global pauses reminders automatically once the envelope progresses to the next step."
+          ],
+          "keyActions": [
+            "Model the workflow in the sandbox using sample recipients before pushing to production.",
+            "Centralize reminder templates to reuse copy across teams.",
+            "Audit workflow metrics weekly to tune reminder frequency."
+          ],
+          "relatedUseCases": [
+            "digital-onboarding",
+            "municipal-permits"
+          ]
+        },
+        {
+          "id": "reminder-strategy",
+          "question": "What is the best way to manage reminder fatigue?",
+          "summary": "Balance urgency with empathy using recipient-aware reminder cadences.",
+          "answer": [
+            "Bundle reminder windows with event-based triggers so recipients receive nudges only when critical milestones slip.",
+            "Use the recipient engagement API to evaluate open and click activity. Reduce frequency automatically when engagement drops.",
+            "Escalate to backup recipients after a configurable number of remediations to keep SLAs intact."
+          ],
+          "keyActions": [
+            "Segment reminder cadences by recipient persona and contract type.",
+            "Route stalled envelopes to customer success leaders before legal deadlines arrive.",
+            "Measure impact via the operations dashboard to prove time-to-signature improvements."
+          ],
+          "relatedUseCases": [
+            "pharma-consent",
+            "digital-onboarding"
+          ]
+        }
+      ]
+    }
+  ]
+}
