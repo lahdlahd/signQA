@@ -1,0 +1,202 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum SignCategory {
+  STRATEGY
+  IMPLEMENTATION
+  GOVERNANCE
+  NURTURE
+}
+
+enum Difficulty {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+  EXPERT
+}
+
+enum ActivityType {
+  QUESTION_CREATED
+  QUESTION_UPDATED
+  QUESTION_PUBLISHED
+  ANSWER_SUBMITTED
+  ANSWER_UPDATED
+  VOTE_CAST
+  TAG_APPLIED
+}
+
+model User {
+  id         String         @id @default(uuid())
+  email      String         @unique
+  name       String?
+  title      String?
+  bio        String?
+  avatarUrl  String?
+  questions  Question[]
+  answers    Answer[]
+  activities Activity[]
+  questionVotes QuestionVote[]
+  answerVotes   AnswerVote[]
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+}
+
+model Category {
+  id           String       @id @default(uuid())
+  name         String       @unique
+  description  String?
+  signCategory SignCategory?
+  questions    Question[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  @@index([signCategory])
+}
+
+model Tag {
+  id           String        @id @default(uuid())
+  name         String        @unique
+  description  String?
+  questionTags QuestionTag[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model DifficultyLevel {
+  difficulty  Difficulty @id
+  label       String
+  description String?
+  questions   Question[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Question {
+  id                String             @id @default(uuid())
+  title             String
+  slug              String             @unique
+  content           String
+  summary           String?
+  difficulty        Difficulty         @default(BEGINNER)
+  difficultyLevel   DifficultyLevel    @relation(fields: [difficulty], references: [difficulty])
+  signCategory      SignCategory
+  categoryId        String?
+  category          Category?          @relation(fields: [categoryId], references: [id])
+  authorId          String
+  author            User               @relation(fields: [authorId], references: [id])
+  lastActivityAt    DateTime           @default(now())
+  publishedAt       DateTime?
+  tagLinks          QuestionTag[]
+  answers           Answer[]
+  useCases          UseCase[]
+  externalReferences ExternalReference[]
+  questionVotes     QuestionVote[]
+  activities        Activity[]
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+
+  @@index([authorId])
+  @@index([categoryId])
+  @@index([signCategory])
+}
+
+model QuestionTag {
+  questionId String
+  tagId      String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  tag        Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@id([questionId, tagId])
+}
+
+model Answer {
+  id          String        @id @default(uuid())
+  questionId  String
+  question    Question      @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  authorId    String?
+  author      User?         @relation(fields: [authorId], references: [id])
+  content     String
+  isAccepted  Boolean       @default(false)
+  publishedAt DateTime?
+  votes       AnswerVote[]
+  activities  Activity[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([questionId])
+}
+
+model UseCase {
+  id          String   @id @default(uuid())
+  questionId  String
+  question    Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  title       String?
+  description String
+  /// Represents the order in which the use case should be presented for a question.
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([questionId])
+}
+
+model ExternalReference {
+  id          String   @id @default(uuid())
+  questionId  String
+  question    Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  label       String
+  url         String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([questionId])
+}
+
+model QuestionVote {
+  id         String   @id @default(uuid())
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  value      Int      @default(0)
+  createdAt  DateTime @default(now())
+
+  @@unique([questionId, userId])
+}
+
+model AnswerVote {
+  id        String  @id @default(uuid())
+  answerId  String
+  answer    Answer  @relation(fields: [answerId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  value     Int     @default(0)
+  createdAt DateTime @default(now())
+
+  @@unique([answerId, userId])
+}
+
+model Activity {
+  id         String        @id @default(uuid())
+  userId     String?
+  user       User?         @relation(fields: [userId], references: [id])
+  questionId String?
+  question   Question?     @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  answerId   String?
+  answer     Answer?       @relation(fields: [answerId], references: [id], onDelete: Cascade)
+  type       ActivityType
+  metadata   Json?
+  occurredAt DateTime       @default(now())
+
+  @@index([questionId])
+  @@index([answerId])
+  @@index([userId])
+}
