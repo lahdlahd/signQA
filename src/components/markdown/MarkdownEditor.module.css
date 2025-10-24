@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.label {
+  font-weight: 600;
+  color: #111827;
+}
+
+.required {
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
+.modeToggle {
+  display: inline-flex;
+  border-radius: 9999px;
+  border: 1px solid #d1d5db;
+  overflow: hidden;
+}
+
+.toggle {
+  background: transparent;
+  border: none;
+  color: #4b5563;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.activeToggle {
+  composes: toggle;
+  background: #111827;
+  color: #f9fafb;
+}
+
+.textarea {
+  font-family: "Fira Code", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #f9fafb;
+  min-height: 240px;
+  resize: vertical;
+  color: #111827;
+}
+
+.textarea:focus {
+  outline: 2px solid #111827;
+  outline-offset: 1px;
+}
+
+.preview {
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: #ffffff;
+  max-height: 480px;
+  overflow: auto;
+}
+
+.preview pre {
+  background: #0f172a;
+  color: #f9fafb;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  overflow: auto;
+}
+
+.preview code {
+  font-family: "Fira Code", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.placeholder {
+  color: #6b7280;
+  font-style: italic;
+}

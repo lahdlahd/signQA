@@ -1,0 +1,45 @@
+.preview {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.preview pre {
+  background: #0f172a;
+  color: #f9fafb;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  overflow: auto;
+}
+
+.preview code {
+  font-family: "Fira Code", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.preview p {
+  line-height: 1.75;
+  color: #1e293b;
+}
+
+.preview h1,
+.preview h2,
+.preview h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #0f172a;
+}
+
+.preview ul,
+.preview ol {
+  padding-left: 1.5rem;
+}
+
+.preview blockquote {
+  border-left: 4px solid rgba(59, 130, 246, 0.4);
+  padding-left: 1rem;
+  color: #334155;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 0 0.75rem 0.75rem 0;
+}
