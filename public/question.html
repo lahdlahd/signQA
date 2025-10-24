@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question · signQA</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <a class="page-header__back" href="index.html">← Back to knowledge base</a>
+    </header>
+
+    <main class="layout layout--question">
+      <article class="question-detail">
+        <header class="question-detail__header">
+          <p class="question-detail__category" data-question-category>Loading category…</p>
+          <h1 class="question-detail__title" data-question-title>Loading question…</h1>
+          <p class="question-detail__summary" data-question-summary></p>
+        </header>
+
+        <section class="question-detail__answer" data-question-answer>
+          Loading answer…
+        </section>
+
+        <section class="question-detail__actions" data-key-actions></section>
+      </article>
+
+      <aside class="question-detail__docs" data-doc-module></aside>
+    </main>
+
+    <section class="related-use-cases" data-related-use-cases>
+      <h2>Related use cases</h2>
+    </section>
+
+    <footer class="site-footer">
+      <a class="button" href="use-case-explorer.html">Open the use case explorer</a>
+    </footer>
+
+    <script type="module" src="./scripts/question-detail.js"></script>
+  </body>
+</html>

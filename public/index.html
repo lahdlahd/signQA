@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>signQA knowledge base</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__content">
+        <p class="site-header__eyebrow">sign.global knowledge hub</p>
+        <h1 class="site-header__title">Find the right answers faster</h1>
+        <p class="site-header__subtitle">
+          Explore curated technical guidance, compliance insights, and workflow playbooks. Every category includes direct links into the sign.global documentation so you can dive deeper without losing momentum.
+        </p>
+        <div class="site-header__actions">
+          <a class="button" href="use-case-explorer.html">Open use case explorer</a>
+          <a class="button button--ghost" href="#knowledge">Browse questions</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout" id="knowledge">
+      <section class="kb-overview">
+        <h2>Knowledge base by the numbers</h2>
+        <p>
+          Last updated <span data-updated-at class="kb-overview__timestamp">—</span>. New modules surface the documentation teammates reference most often during implementations.
+        </p>
+      </section>
+
+      <section class="category-collection" data-category-list>
+        <div class="loading">Loading categories…</div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Have a scenario we should cover? Share it with the team and we'll add it to the explorer.</p>
+    </footer>
+
+    <script type="module" src="./scripts/questions-page.js"></script>
+  </body>
+</html>
