@@ -1,6 +1,6 @@
 # signQA
 
-A lightweight practice companion that helps learners review foundational sign language phrases. The project ships with a full testing strategy (unit, integration, and end-to-end coverage), automated CI checks, and deployment configuration for Vercel.
+A searchable sign language knowledge base that surfaces practice tips, teaching ideas, and community Q&A with autosuggest and highlighted matches. The project ships with a full testing strategy (unit, integration, and end-to-end coverage), automated CI checks, and deployment configuration for Vercel.
 
 ## Tech stack
 
@@ -24,13 +24,12 @@ npm run typecheck
 npm run lint
 ```
 
-The default sign language loaded on startup can be controlled via the `VITE_DEFAULT_LANGUAGE` environment variable (`ASL` or `BSL`). Copy `.env.example` to `.env` to customise locally.
 
 ## Testing
 
 | Command | Description |
 | ------- | ----------- |
-| `npm run test:unit` | Validates utilities such as the sign translator helpers. |
+| `npm run test:unit` | Validates the search index scoring, highlighting, and suggestion helpers. |
 | `npm run test:integration` | Uses React Testing Library to verify UI flows end-to-end within the DOM. |
 | `npm run test:e2e` | Builds the app and runs Playwright against the preview server. |
 | `npm run test` | Executes the entire Vitest suite (unit + integration) with coverage. |
@@ -78,4 +77,4 @@ Operational guidance—including release management, secret handling, and migrat
 └── .github/workflows/      # CI definitions
 ```
 
-Feel free to extend the phrase library or augment the Vercel configuration as product features evolve.
+Feel free to extend the knowledge base entries, refine the relevance model, or augment the autosuggest experience as product features evolve.
